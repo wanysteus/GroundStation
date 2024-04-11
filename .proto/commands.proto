@@ -1,0 +1,18 @@
+//Message format for transmitting commands
+// from UI application to LC.
+syntax = "proto3";
+
+package commands;
+
+message ControlCommand {
+  enum CommandType {
+    UNKNOWN = 0;
+    START = 1; 
+    STOP = 2;
+    RESET = 3; 
+    SET_MOTOR_POSITION = 4; // New command for setting the stepper motor position
+  }
+
+  CommandType command = 1;
+  optional int32 motorPosition = 2; // Optional field for the motor position
+}

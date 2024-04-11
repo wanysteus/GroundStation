@@ -1,0 +1,18 @@
+// Message format for transmitting sensor data
+// from LC to UI application
+syntax = "proto3";
+
+package sensor_vals;
+
+// Definition of a single sensor
+message Sensor {
+    optional string name = 1;
+    optional int32 id = 2;
+    optional float value = 3; //float for sensor values
+    optional bool switchOn = 4; //bool for handling switches
+}
+
+//Container for multiple Sensor messages
+message SensorData {
+    repeated Sensor sensors = 1;
+}
