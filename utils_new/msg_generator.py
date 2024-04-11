@@ -24,9 +24,17 @@ def generate_message():
     # Define sensors with name, ID, value range, and whether to include the switchOn field
     sensors_config = [
         ("Temperature Sensor", 1, (20.0, 400.0), True, False),
-        ("Pressure Sensor", 2, (1.0, 10.0), True, False),
-        ("Switch", 3, None, False, True),
-        ("StepperMotor", 4, (0.0, 90.0), True, False)
+        ("Temperature Sensor", 2, (20.0, 400.0), True, False),
+        ("Temperature Sensor", 3, (20.0, 400.0), True, False),
+        ("Pressure Sensor", 4, (1.0, 10.0), True, False),
+        ("Pressure Sensor", 5, (1.0, 10.0), True, False),
+        ("Pressure Sensor", 6, (1.0, 10.0), True, False),
+        ("Switch", 7, None, False, True),
+        ("Switch", 8, None, False, True),
+        ("Switch", 9, None, False, True),
+        ("StepperMotor", 10, (0.0, 90.0), True, False),
+        ("StepperMotor", 11, (0.0, 90.0), True, False),
+        ("StepperMotor", 12, (0.0, 90.0), True, False)
     ]
 
     # Populate the SensorData message

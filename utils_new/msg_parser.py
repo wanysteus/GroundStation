@@ -5,6 +5,15 @@ sys.path.append(project_root)
 from message_formats import sensor_vals_pb2
 import json
 
+'''
+Parses binary message to .json.
+
+Current message format from sensor_vals.proto
+
+Currently reads binary message from file, in future implementations this will be read from serialwrapper.py or another implementation 
+of serial communication.
+'''
+
 def parse_sensor_data(binary_data):
     """Parse binary sensor data into a JSON string."""
     # Create a SensorData message object
