@@ -1,15 +1,10 @@
 import sys
 import os
-
-# Calculate the absolute path to the project root
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-
-# Add the project root to the Python search path
-sys.path.append(project_root)
-
-# Now try importing your module
-from message_formats import sensor_vals_pb2
 import random
+project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.append(project_root)
+from message_formats import sensor_vals_pb2
+
 
 def create_sensor(name, id, value_range, include_value=True, include_switch=False):
     """Create and return a populated Sensor message."""
@@ -21,6 +16,7 @@ def create_sensor(name, id, value_range, include_value=True, include_switch=Fals
     if include_switch:
         sensor.switchOn = random.choice([True, False])  # Randomly decide the switch state if included
     return sensor
+
 
 def generate_message():
     sensor_data = sensor_vals_pb2.SensorData()
@@ -43,11 +39,16 @@ def generate_message():
 
     return binary_data
 
-def main():
+
+def write_file(message: str):
+    with open("dummyMessage.bin", "wb") as f:
+        f.write(message)
     
+
+def main():
     binary_data = generate_message()
-    # For demonstration purposes, print the serialized data's size
-    print(f"Serialized SensorData size: {len(binary_data)} bytes")
+    write_file(binary_data)
+
 
 if __name__ == "__main__":
     main()
