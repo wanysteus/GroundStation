@@ -1,6 +1,9 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+cors = CORS(app)
 
 books_list = [
   {
@@ -62,36 +65,16 @@ def books():
       'Nothing found', 404
 
   if request.method == 'POST':
-    new_title = request.json['title']
-    new_author = request.json['author']
-    new_country = request.json['country']
-    new_imageLink = request.json['imageLink']
-    new_language = request.json['language']
-    new_link = request.json['link']
-    new_pages = request.json['pages']
-    new_year = request.json['year']
-    new_id = books_list[-1]['id'] + 1
-    
-    # new_title = request.form['title']
-    # new_author = request.form['author']
-    # new_country = request.form['country']
-    # new_imageLink = request.form['imageLink']
-    # new_language = request.form['language']
-    # new_link = request.form['link']
-    # new_pages = request.form['pages']
-    # new_year = request.form['year']
-
-
     new_obj = {
-      'id': new_id,
-      'title': new_title,
-      'author': new_author,
-      'country': new_country,
-      'imageLink': new_imageLink,
-      'language': new_language,
-      'link': new_link,
-      'pages': new_pages,
-      'year': new_year
+      'id': books_list[-1]['id'] + 1,
+      'title': request.json['title'],
+      'author': request.json['author'],
+      'country': request.json['country'],
+      'imageLink': request.json['imageLink'],
+      'language': request.json['language'],
+      'link': request.json['link'],
+      'pages': request.json['pages'],
+      'year': request.json['year']
     }
     
     print(new_obj)
