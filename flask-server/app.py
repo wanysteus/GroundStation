@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from utils_new.sensors_new import Sensor, TemperatureSensor, PressureSensor, Battery, Switch, StepperMotor, SensorManager
 
 app = Flask(__name__)
 
