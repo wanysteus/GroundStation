@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import axios from 'axios';
 import './App.css';
+import ControlPanel from './components/controlPanel';
 
 function App() {
   axios.defaults.baseURL = 'http://localhost:5000';
@@ -23,7 +24,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <button onClick={handleClick}>SEND GET REQUEST</button>
+        <div className='flex flex-row justify-center gap-2'>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleClick}>
+            SEND GET REQUEST
+          </button>
+        </div>
+        <ControlPanel />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
