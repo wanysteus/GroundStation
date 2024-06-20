@@ -4,15 +4,16 @@ syntax = "proto3";
 
 package commands;
 
-message ControlCommand {
-  enum CommandType {
-    UNKNOWN = 0;
-    START = 1; 
-    STOP = 2;
-    RESET = 3; 
-    SET_MOTOR_POSITION = 4; // New command for setting the stepper motor position
-  }
+enum CommandType {
+  UNKNOWN = 0;
+  OPEN = 1; 
+  CLOSE = 2;
+  RESET = 3; 
+  SET_MOTOR_POSITION = 4; // New command for setting the stepper motor position
+}
 
-  CommandType command = 1;
-  optional int32 motorPosition = 2; // Optional field for the motor position
+message ControlCommand {
+  int32 id = 1;
+  CommandType command = 2;
+  int32 motorPosition = 3; // Field for the motor position
 }
