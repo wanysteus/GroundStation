@@ -39,7 +39,7 @@ class PressureSensor(Sensor):
 class Battery(Sensor):
     def update(self, value=None, **kwargs):
         if value is not None:
-            self.value = self.convert_pressure(value)
+            self.value = self.convert_voltage(value)
         super().update(**kwargs)
 
     @staticmethod
@@ -54,7 +54,7 @@ class Switch(Sensor):
 class StepperMotor(Sensor):
     def update(self, value=None, **kwargs):
         if value is not None:
-            self.value = self.convert_pressure(value)
+            self.value = self.convert_degrees(value)
         super().update(**kwargs)
 
     @staticmethod
@@ -98,6 +98,16 @@ class SensorManager:
         for sensor_info in sensor_data['sensors']:
             self.update_or_add_sensor(sensor_info)
 
+    def display_sensors(self):
+        for sensor_id, sensor in self.sensors.items():
+            print(f"    Sensor ID: {sensor_id}")
+            print(f"    Name: {sensor.name}")
+            if sensor.name == 'Switch':
+                print(f"    SwitchOn: {sensor.switch_on}", end="\n\n")
+            else: 
+                print(f"    Value: {sensor.value}", end="\n\n")
+
+
 
 def main():
     with open("dummyMessage.bin", "rb") as f:
@@ -110,14 +120,7 @@ def main():
     sensors.update_from_json(sensors_json)
 
     # Display the state of all sensors managed by SensorManager
-    for sensor_id, sensor in sensors.sensors.items():
-        print(f"    Sensor ID: {sensor_id}")
-        print(f"    Name: {sensor.name}")
-        if sensor.name == 'Switch':
-            print(f"    SwitchOn: {sensor.switch_on}", end="\n\n")
-        else: 
-            print(f"    Value: {sensor.value}", end="\n\n")
-        
+    sensors.display_sensors()
 
 if __name__ == "__main__":
     main()
