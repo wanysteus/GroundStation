@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sensor Control</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Sensor Control</h1>
+    <div>
+        <label for="command_id">Command ID:</label>
+        <input type="text" id="command_id">
+    </div>
+    <div>
+        <label for="command_type">Command Type:</label>
+        <select id="command_type">
+            <option value="UNKNOWN">UNKNOWN</option>
+            <option value="OPEN">OPEN</option>
+            <option value="CLOSE">CLOSE</option>
+            <option value="RESET">RESET</option>
+            <option value="SET_MOTOR_POSITION">SET_MOTOR_POSITION</option>
+        </select>
+    </div>
+    <div id="motor_position_div" style="display: none;">
+        <label for="motor_position">Motor Position:</label>
+        <input type="text" id="motor_position">
+    </div>
+    <button onclick="sendCommand()">Send Command</button>
+    <h2>Sensor Data</h2>
+    <div id="sensor_data_display"></div>
+
+    <!-- Include Eel library -->
+    <script type="text/javascript" src="/eel.js"></script>
+    <!-- Include custom script -->
+    <script src="script.js"></script>
+</body>
+</html>
