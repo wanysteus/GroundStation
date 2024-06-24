@@ -7,49 +7,64 @@
 <body>
     <h1>Sensor Control</h1>
     
-    <h2>Command Configuration</h2>
-    <div>
-        <h3>Switches</h3>
-        <div class="switch-group">
-            <label>Switch 1:</label>
-            <span class="switch-option">
-                <input type="radio" name="switch_1" value="open"> Open
-            </span>
-            <span class="switch-option">
-                <input type="radio" name="switch_1" value="close"> Close
-            </span>
+    <div class="status-box">
+        <div id="connection-status">
+            <span class="status-indicator red" id="status-indicator"></span>
+            <span>CON Status</span>
         </div>
-        <div class="switch-group">
-            <label>Switch 2:</label>
-            <span class="switch-option">
-                <input type="radio" name="switch_2" value="open"> Open
-            </span>
-            <span class="switch-option">
-                <input type="radio" name="switch_2" value="close"> Close
-            </span>
+        <div id="connection-type">
+            <span>CON Type:</span>
+            <span id="connection-type-value">Ethernet</span>
         </div>
-        <div class="switch-group">
-            <label>Switch 3:</label>
-            <span class="switch-option">
-                <input type="radio" name="switch_3" value="open"> Open
-            </span>
-            <span class="switch-option">
-                <input type="radio" name="switch_3" value="close"> Close
-            </span>
-        </div>
+    </div>
 
-        <h3>Stepper Motors</h3>
-        <div>
-            <label for="motor_position_1">Stepper Motor 1 Angle:</label>
-            <input type="text" id="motor_position_1">
+    <h2>Command Configuration</h2>
+    <div class="command-container">
+        <div class="command-section">
+            <h3>Switches</h3>
+            <div class="switch-group">
+                <label>Switch 1:</label>
+                <span class="switch-option">
+                    <input type="radio" name="switch_1" value="open"> Open
+                </span>
+                <span class="switch-option">
+                    <input type="radio" name="switch_1" value="close"> Close
+                </span>
+            </div>
+            <div class="switch-group">
+                <label>Switch 2:</label>
+                <span class="switch-option">
+                    <input type="radio" name="switch_2" value="open"> Open
+                </span>
+                <span class="switch-option">
+                    <input type="radio" name="switch_2" value="close"> Close
+                </span>
+            </div>
+            <div class="switch-group">
+                <label>Switch 3:</label>
+                <span class="switch-option">
+                    <input type="radio" name="switch_3" value="open"> Open
+                </span>
+                <span class="switch-option">
+                    <input type="radio" name="switch_3" value="close"> Close
+                </span>
+            </div>
         </div>
-        <div>
-            <label for="motor_position_2">Stepper Motor 2 Angle:</label>
-            <input type="text" id="motor_position_2">
-        </div>
-        <div>
-            <label for="motor_position_3">Stepper Motor 3 Angle:</label>
-            <input type="text" id="motor_position_3">
+        
+        <div class="command-section">
+            <h3>Stepper Motors</h3>
+            <div class="motor-group">
+                <label for="motor_position_1">Stepper Motor 1 Angle:</label>
+                <input type="text" id="motor_position_1">
+            </div>
+            <div class="motor-group">
+                <label for="motor_position_2">Stepper Motor 2 Angle:</label>
+                <input type="text" id="motor_position_2">
+            </div>
+            <div class="motor-group">
+                <label for="motor_position_3">Stepper Motor 3 Angle:</label>
+                <input type="text" id="motor_position_3">
+            </div>
         </div>
     </div>
     

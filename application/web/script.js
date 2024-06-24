@@ -1,3 +1,25 @@
+// Expose the function to Eel
+eel.expose(update_sensor_data);
+
+function update_sensor_data(sensorData) {
+    console.log('Received sensor data:', sensorData);  // Log the received data
+    for (let sensorId in sensorData) {
+        let sensor = sensorData[sensorId];
+        console.log(`Updating sensor ${sensorId}:`, sensor);  // Log each sensor update
+        let element = document.getElementById(`sensor_${sensorId}`);
+        if (element) {
+            console.log(`Element found for sensor ${sensorId}:`, element);  // Log the found element
+            if (sensor.name === 'Switch') {
+                element.innerText = sensor.switch_on ? 'On' : 'Off';
+            } else {
+                element.innerText = sensor.value;
+            }
+        } else {
+            console.warn(`No element found for sensor ${sensorId}`);  // Warn if element is not found
+        }
+    }
+}
+
 function sendCommand() {
     let commands = [];
 
@@ -29,23 +51,24 @@ function sendCommand() {
     eel.send_commands_to_server(commands);
 }
 
-eel.expose(update_sensor_data);
-
-function update_sensor_data(sensorData) {
-    console.log('Received sensor data:', sensorData);  // Log the received data
-    for (let sensorId in sensorData) {
-        let sensor = sensorData[sensorId];
-        console.log(`Updating sensor ${sensorId}:`, sensor);  // Log each sensor update
-        let element = document.getElementById(`sensor_${sensorId}`);
-        if (element) {
-            console.log(`Element found for sensor ${sensorId}:`, element);  // Log the found element
-            if (sensor.name === 'Switch') {
-                element.innerText = sensor.switch_on ? 'On' : 'Off';
-            } else {
-                element.innerText = sensor.value;
-            }
+// Functions to update connection status
+function setConnectionStatus(isConnected) {
+    let statusIndicator = document.getElementById('status-indicator');
+    if (statusIndicator) {
+        if (isConnected) {
+            statusIndicator.classList.remove('red');
+            statusIndicator.classList.add('green');
         } else {
-            console.warn(`No element found for sensor ${sensorId}`);  // Warn if element is not found
+            statusIndicator.classList.remove('green');
+            statusIndicator.classList.add('red');
         }
+    } else {
+        console.error('Status indicator element not found');
     }
 }
+
+// Example usage:
+// setConnectionStatus(true); // Set status to connected
+
+// Expose the function to Python via Eel
+eel.expose(setConnectionStatus);

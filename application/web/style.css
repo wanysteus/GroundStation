@@ -1,43 +1,65 @@
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
+    position: relative;
 }
 
-div {
-    margin-bottom: 10px;
+h1, h2 {
+    color: #333;
 }
 
-label {
+.status-box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.status-indicator {
     display: inline-block;
-    width: 150px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
 }
 
-input, select {
-    padding: 5px;
-    width: 200px;
+.status-indicator.green {
+    background-color: green;
 }
 
-button {
-    padding: 10px 20px;
-    font-size: 16px;
+.status-indicator.red {
+    background-color: red;
 }
 
-#sensor_data_display {
-    margin-top: 20px;
+.command-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.command-section {
+    flex: 1;
+    margin-right: 20px;
     padding: 10px;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
 }
 
-/* New class to reduce margin between switch elements */
-.switch-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
+.command-section:last-child {
+    margin-right: 0;
 }
 
-.switch-group label {
-    width: auto;
+.switch-group, .motor-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.switch-group label, .motor-group label {
+    width: 150px;
     margin-right: 10px;
 }
 
@@ -49,4 +71,19 @@ button {
 
 .switch-option input[type="radio"] {
     margin-right: 5px;  /* Adjust spacing between checkbox and label */
+}
+
+#sensor_data_display {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+#sensor_data_display div {
+    margin-bottom: 5px;
+}
+
+label {
+    font-weight: bold;
 }

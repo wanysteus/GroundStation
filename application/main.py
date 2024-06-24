@@ -23,6 +23,7 @@ def start_server(host='0.0.0.0', port=5000):
         client_socket, addr = server_socket.accept()
         clients.append(client_socket)
         logging.info(f"Accepted connection from {addr}")
+        eel.setConnectionStatus(True)  # Set connection status to green
         threading.Thread(target=handle_client_connection, args=(client_socket,)).start()
 
 def handle_client_connection(client_socket):
@@ -33,11 +34,13 @@ def handle_client_connection(client_socket):
             if not data:
                 break
             receive_sensor_data(sensors, data)
-            
     except Exception as e:
         logging.error(f"Error handling client connection: {e}")
     finally:
         client_socket.close()
+        clients.remove(client_socket)
+        if not clients:
+            eel.setConnectionStatus(False)  # Set connection status to red
 
 def receive_sensor_data(sensors, data):
     sensors_json = sensors_new.msg_parser.parse_sensor_data(data)
