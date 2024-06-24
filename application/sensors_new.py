@@ -98,6 +98,16 @@ class SensorManager:
         for sensor_info in sensor_data['sensors']:
             self.update_or_add_sensor(sensor_info)
 
+    def get_sensor_data(self):
+        sensor_data = {}
+        for sensor_id, sensor in self.sensors.items():
+            sensor_data[sensor_id] = {
+                'name': sensor.name,
+                'value': sensor.value,
+                'switch_on': sensor.switch_on
+            }
+        return sensor_data
+
     def display_sensors(self):
         for sensor_id, sensor in self.sensors.items():
             print(f"    Sensor ID: {sensor_id}")

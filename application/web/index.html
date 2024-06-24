@@ -6,27 +6,106 @@
 </head>
 <body>
     <h1>Sensor Control</h1>
+    
+    <h2>Command Configuration</h2>
     <div>
-        <label for="command_id">Command ID:</label>
-        <input type="text" id="command_id">
+        <h3>Switches</h3>
+        <div class="switch-group">
+            <label>Switch 1:</label>
+            <span class="switch-option">
+                <input type="radio" name="switch_1" value="open"> Open
+            </span>
+            <span class="switch-option">
+                <input type="radio" name="switch_1" value="close"> Close
+            </span>
+        </div>
+        <div class="switch-group">
+            <label>Switch 2:</label>
+            <span class="switch-option">
+                <input type="radio" name="switch_2" value="open"> Open
+            </span>
+            <span class="switch-option">
+                <input type="radio" name="switch_2" value="close"> Close
+            </span>
+        </div>
+        <div class="switch-group">
+            <label>Switch 3:</label>
+            <span class="switch-option">
+                <input type="radio" name="switch_3" value="open"> Open
+            </span>
+            <span class="switch-option">
+                <input type="radio" name="switch_3" value="close"> Close
+            </span>
+        </div>
+
+        <h3>Stepper Motors</h3>
+        <div>
+            <label for="motor_position_1">Stepper Motor 1 Angle:</label>
+            <input type="text" id="motor_position_1">
+        </div>
+        <div>
+            <label for="motor_position_2">Stepper Motor 2 Angle:</label>
+            <input type="text" id="motor_position_2">
+        </div>
+        <div>
+            <label for="motor_position_3">Stepper Motor 3 Angle:</label>
+            <input type="text" id="motor_position_3">
+        </div>
     </div>
-    <div>
-        <label for="command_type">Command Type:</label>
-        <select id="command_type">
-            <option value="UNKNOWN">UNKNOWN</option>
-            <option value="OPEN">OPEN</option>
-            <option value="CLOSE">CLOSE</option>
-            <option value="RESET">RESET</option>
-            <option value="SET_MOTOR_POSITION">SET_MOTOR_POSITION</option>
-        </select>
-    </div>
-    <div id="motor_position_div" style="display: none;">
-        <label for="motor_position">Motor Position:</label>
-        <input type="text" id="motor_position">
-    </div>
+    
     <button onclick="sendCommand()">Send Command</button>
+    
     <h2>Sensor Data</h2>
-    <div id="sensor_data_display"></div>
+    <div id="sensor_data_display">
+        <div>
+            <label>Temperature Sensor 1:</label>
+            <span id="sensor_1">N/A</span>
+        </div>
+        <div>
+            <label>Temperature Sensor 2:</label>
+            <span id="sensor_2">N/A</span>
+        </div>
+        <div>
+            <label>Temperature Sensor 3:</label>
+            <span id="sensor_3">N/A</span>
+        </div>
+        <div>
+            <label>Pressure Sensor 1:</label>
+            <span id="sensor_4">N/A</span>
+        </div>
+        <div>
+            <label>Pressure Sensor 2:</label>
+            <span id="sensor_5">N/A</span>
+        </div>
+        <div>
+            <label>Pressure Sensor 3:</label>
+            <span id="sensor_6">N/A</span>
+        </div>
+        <div>
+            <label>Switch 1:</label>
+            <span id="sensor_7">N/A</span>
+        </div>
+        <div>
+            <label>Switch 2:</label>
+            <span id="sensor_8">N/A</span>
+        </div>
+        <div>
+            <label>Switch 3:</label>
+            <span id="sensor_9">N/A</span>
+        </div>
+        <div>
+            <label>Stepper Motor 1:</label>
+            <span id="sensor_10">N/A</span>
+        </div>
+        <div>
+            <label>Stepper Motor 2:</label>
+            <span id="sensor_11">N/A</span>
+        </div>
+        <div>
+            <label>Stepper Motor 3:</label>
+            <span id="sensor_12">N/A</span>
+        </div>
+    </div>
 
     <!-- Include Eel library -->
     <script type="text/javascript" src="/eel.js"></script>

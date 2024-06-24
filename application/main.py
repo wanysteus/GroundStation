@@ -42,10 +42,13 @@ def handle_client_connection(client_socket):
 def receive_sensor_data(sensors, data):
     sensors_json = sensors_new.msg_parser.parse_sensor_data(data)
     sensors.update_from_json(sensors_json)
-    sensors.display_sensors()
+    # sensors.display_sensors() # Troubleshooting, displays sensor data in terminal
     
-    # Sending the sensor data to the web interface
-    eel.update_sensor_data(sensors_json)  # Convert sensors_json to a suitable format if necessary
+    # Send the updated sensor data to the web interface
+
+    # logging.info(f"Sending sensor data to web: {sensors.get_sensor_data()}")  # Log the data being sent
+    eel.update_sensor_data(sensors.get_sensor_data())
+
 
 @eel.expose
 def send_command_to_client(command_id, command_type, motor_position=None):
@@ -63,6 +66,15 @@ def send_command_to_client(command_id, command_type, motor_position=None):
         except Exception as e:
             logging.error(f"Error sending command to client: {e}")
 
+@eel.expose
+def send_commands_to_server(commands):
+    for command in commands:
+        if command['type'] == 'SWITCH':
+            send_command_to_client(command['id'], 'OPEN' if command['state'] == 'open' else 'CLOSE')
+        elif command['type'] == 'STEPPER_MOTOR':
+            send_command_to_client(command['id'], 'SET_MOTOR_POSITION', command['position'])
+
+
 if __name__ == "__main__":
     threading.Thread(target=start_server).start()
-    eel.start('index.html', size=(800, 600))
+    eel.start('index.html', size=(1000, 800))

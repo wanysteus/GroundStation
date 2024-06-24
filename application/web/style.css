@@ -28,3 +28,25 @@ button {
     border: 1px solid #ccc;
     background-color: #f9f9f9;
 }
+
+/* New class to reduce margin between switch elements */
+.switch-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.switch-group label {
+    width: auto;
+    margin-right: 10px;
+}
+
+.switch-option {
+    display: flex;
+    align-items: center;
+    margin-right: 15px;  /* Adjust spacing between pairs */
+}
+
+.switch-option input[type="radio"] {
+    margin-right: 5px;  /* Adjust spacing between checkbox and label */
+}
