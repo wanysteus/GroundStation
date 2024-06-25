@@ -67,6 +67,11 @@ function setConnectionStatus(isConnected) {
     }
 }
 
+// Function to update slider value display
+function updateSliderValue(motorId, value) {
+    document.getElementById(`motor_position_${motorId}_value`).innerText = value;
+}
+
 // Example usage:
 // setConnectionStatus(true); // Set status to connected
 

@@ -55,15 +55,18 @@
             <h3>Stepper Motors</h3>
             <div class="motor-group">
                 <label for="motor_position_1">Stepper Motor 1 Angle:</label>
-                <input type="text" id="motor_position_1">
+                <input type="range" id="motor_position_1" min="0" max="180" value="90" oninput="updateSliderValue(1, this.value)">
+                <span id="motor_position_1_value">90</span>
             </div>
             <div class="motor-group">
                 <label for="motor_position_2">Stepper Motor 2 Angle:</label>
-                <input type="text" id="motor_position_2">
+                <input type="range" id="motor_position_2" min="0" max="180" value="90" oninput="updateSliderValue(2, this.value)">
+                <span id="motor_position_2_value">90</span>
             </div>
             <div class="motor-group">
                 <label for="motor_position_3">Stepper Motor 3 Angle:</label>
-                <input type="text" id="motor_position_3">
+                <input type="range" id="motor_position_3" min="0" max="180" value="90" oninput="updateSliderValue(3, this.value)">
+                <span id="motor_position_3_value">90</span>
             </div>
         </div>
     </div>
