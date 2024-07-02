@@ -19,20 +19,20 @@ sensor_data = {
 def generate_sensor_data():
     sensor_data_pb = sensor_vals_pb2.SensorData()
 
-    # Generate random temperature and pressure values
+    # Generate updated temperature and pressure values based on previous values
     for i in range(3):
+        sensor_data['temperature'][i] *= random.uniform(0.98, 1.02)
         sensor = sensor_data_pb.sensors.add()
         sensor.id = i + 1
         sensor.name = "Temperature Sensor"
-        sensor.value = random.uniform(20.0, 100.0)
-        sensor_data['temperature'][i] = sensor.value
+        sensor.value = sensor_data['temperature'][i]
 
     for i in range(3):
+        sensor_data['pressure'][i] *= random.uniform(0.98, 1.02)
         sensor = sensor_data_pb.sensors.add()
         sensor.id = i + 4
         sensor.name = "Pressure Sensor"
-        sensor.value = random.uniform(1.0, 10.0)
-        sensor_data['pressure'][i] = sensor.value
+        sensor.value = sensor_data['pressure'][i]
 
     # Add switch and stepper motor values
     for i in range(3):
